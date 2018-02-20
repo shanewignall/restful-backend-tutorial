@@ -1,0 +1,38 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "Backend for a simple todo app",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run clean && npm run build && npm run serve",
+    "debug": "npm run clean && npm run build && nodemon dist/server.js",
+    "clean": "rm -rf dist && mkdir dist",
+    "build": "babel . -d dist --presets env --ignore node_modules",
+    "serve": "node dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shanewignall/restful-backend-tutorial.git"
+  },
+  "keywords": [
+    "nodejs",
+    "rest",
+    "api",
+    "todo"
+  ],
+  "author": "Wignall, Shane M",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shanewignall/restful-backend-tutorial/issues"
+  },
+  "homepage": "https://github.com/shanewignall/restful-backend-tutorial#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "nodemon": "^1.15.1"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^5.0.6"
+  }
+}
