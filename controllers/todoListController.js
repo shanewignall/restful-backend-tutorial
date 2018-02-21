@@ -23,9 +23,9 @@ exports.getAllTasks = (req, res) => {
 };
 
 exports.createTask = (req, res) => {
-    const newTask = new Task(req.body.text);
+    const newTask = new Task(req.body);
 
-    Task.create(newTask, (err, task) => {
+    newTask.save((err, task) => {
         if (err) {
             res.send(err);
         }
@@ -35,26 +35,28 @@ exports.createTask = (req, res) => {
 };
 
 exports.completeTask = (req, res) => {
-    Task.create({
-        complete: true
-    }, (err, todo) => {
-        if (err) {
-            res.send(err);
-        }
+    Task.findOneAndUpdate({
+        _id: req.params.taskId
+    }, req.body,
+        (err, task) => {
+            if (err) {
+                res.send(err);
+            }
 
-        res.json(todo);
-    });
+            res.json(task);
+        });
 };
 
 exports.deleteTask = (req, res) => {
     Task.remove({
-        id: req.params.taskId
-    }, (err, todo) => {
+        _id: req.params.taskId
+    }, (err, task) => {
         if (err) {
             res.send(err);
         }
 
-        res.json({ message: `Task ${task.id} successfully deleted` });
+        res.json({
+            message: `Task ${task} successfully deleted`
+        });
     });
 };
-

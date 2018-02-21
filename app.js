@@ -5,13 +5,23 @@ import routes from './routes/index.js';
 
 const app = express();
 
-// connect to the database
-mongoose.connect('mongodb://localhost/todo-app');
+/**
+ * Connect to the database
+ */
 
-// pass the routes to the app
+mongoose.connect('mongodb://localhost');
+
+/**
+ * Register the routes
+ */
+
 routes(app);
 
-// catch 404
+/**
+ * Middleware
+ */
+
+// catch 400
 app.use((err, req, res, next) => {
 	console.log(err.stack);
 	res.status(400).send(`Error: ${res.originUrl} not found`);

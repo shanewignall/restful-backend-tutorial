@@ -2,10 +2,10 @@
   "name": "todo-app",
   "version": "1.0.0",
   "description": "Backend for a simple todo app",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "npm run clean && npm run build && npm run serve",
-    "debug": "npm run clean && npm run build && nodemon dist/server.js",
+    "start": "nodemon server.js --exec babel-node --presets env",
+    "release": "npm run clean && npm run build && npm run serve",
     "clean": "rm -rf dist && mkdir dist",
     "build": "babel . -d dist --presets env --ignore node_modules",
     "serve": "node dist/server.js"

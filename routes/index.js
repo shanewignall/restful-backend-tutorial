@@ -1,11 +1,13 @@
-import todoList from '../controllers/todoListController';
+// import todoList from '../controllers/todoListController';
 
 export default (app) => {
-    app.route('/todo')
+    const todoList = require('../controllers/todoListController');
+
+    app.route('/tasks')
         .get(todoList.getAllTasks)
         .post(todoList.createTask);
 
-    app.route('/todo/:taskId')
+    app.route('/tasks/:taskId')
         .get(todoList.getTask)
         .put(todoList.completeTask)
         .delete(todoList.deleteTask);
