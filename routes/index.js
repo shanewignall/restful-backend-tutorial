@@ -1,14 +1,12 @@
-// import todoList from '../controllers/todoListController';
+import notebook from '../controllers/notebookController';
 
 export default (app) => {
-    const todoList = require('../controllers/todoListController');
+    app.route('/notes')
+        .get(notebook.getAllNotes)
+        .post(notebook.createNote);
 
-    app.route('/tasks')
-        .get(todoList.getAllTasks)
-        .post(todoList.createTask);
-
-    app.route('/tasks/:taskId')
-        .get(todoList.getTask)
-        .put(todoList.completeTask)
-        .delete(todoList.deleteTask);
+    app.route('/notes/:noteId')
+        .get(notebook.getNote)
+        .put(notebook.updateNote)
+        .delete(notebook.deleteNote);
 };

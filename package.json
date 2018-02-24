@@ -1,7 +1,7 @@
 {
-  "name": "todo-app",
+  "name": "notes-app",
   "version": "1.0.0",
-  "description": "Backend for a simple todo app",
+  "description": "Backend for a simple notes app",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js --exec babel-node --presets env",
@@ -18,7 +18,7 @@
     "nodejs",
     "rest",
     "api",
-    "todo"
+    "notes"
   ],
   "author": "Wignall, Shane M",
   "license": "ISC",

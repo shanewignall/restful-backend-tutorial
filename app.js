@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 
 import routes from './routes/index.js';
 
@@ -12,14 +13,11 @@ const app = express();
 mongoose.connect('mongodb://localhost');
 
 /**
- * Register the routes
- */
-
-routes(app);
-
-/**
  * Middleware
  */
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // catch 400
 app.use((err, req, res, next) => {
@@ -34,5 +32,11 @@ app.use((err, req, res, next) => {
 	res.status(500).send(`Error: ${err}`);
 	next();
 });
+
+/**
+ * Register the routes
+ */
+
+routes(app);
 
 export default app;
